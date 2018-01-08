@@ -1,0 +1,16 @@
+<h2>Authors</h2>
+<ul class="authors">
+    <li *ngFor="let author of authors">
+        <a routerLink="/authors/{{ author.id }}">
+            <span class="badge">{{ author.id }}</span> {{ author.name }}
+        </a>
+        <button class="delete" title="delete author" (click)="delete(author)">x</button>
+    </li>
+    
+    <div>
+    <label>Author name:
+        <input #authorName />
+    </label>
+    <button (click)="add(authorName.value); authorName.value=''">add</button>
+</div>
+</ul>
