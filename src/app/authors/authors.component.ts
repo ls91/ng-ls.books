@@ -17,14 +17,16 @@ export class AuthorsComponent implements OnInit {
     }
     
     //Create
-    add(name: string):void {
-        name = name.trim();
+    add(firstName: string, middleName: string, lastName: string):void {
+        firstName = firstName.trim();
+        middleName = middleName.trim();
+        lastName = lastName.trim();
         
-        if (!name) {
+        if (!firstName && !middleName && !lastName) {
             return;
         }
         
-        this.authorService.addAuthor({ name } as Author).subscribe(author => {
+        this.authorService.addAuthor({ firstName, middleName, lastName } as Author).subscribe(author => {
             this.authors.push(author);
         });
     }

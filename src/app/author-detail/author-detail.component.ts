@@ -16,10 +16,10 @@ export class AuthorDetailComponent implements OnInit {
     constructor(private route: ActivatedRoute, private authorService: AuthorService, private location: Location) { }
 
     ngOnInit() {
-        this.getHero();
+        this.getAuthor();
     }
     
-    getHero(): void {
+    getAuthor(): void {
         const id = +this.route.snapshot.paramMap.get('id');
         this.authorService.getAuthor(id).subscribe(author => this.author = author);
     }

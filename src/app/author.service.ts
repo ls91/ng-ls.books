@@ -71,7 +71,7 @@ export class AuthorService {
             return of([]);
         }
         
-        return this.httpClient.get<Author[]>(`${this.authorsUrl}?name=${term}`)
+        return this.httpClient.get<Author[]>(`${this.authorsUrl}?firstName=${term}`)
                 .pipe(
                     tap(_ => this.log(`found authors matching ${term}`)),
                     catchError(this.handleError<Author[]>('searchAuthors', []))

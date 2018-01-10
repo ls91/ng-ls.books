@@ -2,15 +2,23 @@
 <ul class="authors">
     <li *ngFor="let author of authors">
         <a routerLink="/authors/{{ author.id }}">
-            <span class="badge">{{ author.id }}</span> {{ author.name }}
+            <span class="badge">{{ author.id }}</span> {{ author.lastName + ", " + author.firstName + (!author.middleName.trim() ? "" : " ") + author.middleName }}
         </a>
-        <button class="delete" title="delete author" (click)="delete(author)">x</button>
+        <button type="button" class="btn btn-danger" title="delete author" (click)="delete(author)">x</button>
     </li>
     
     <div>
-    <label>Author name:
-        <input #authorName />
+    <label>First Name:
+        <input #authorFirstName />
     </label>
-    <button (click)="add(authorName.value); authorName.value=''">add</button>
+    <br />
+    <label>Middle Name:
+        <input #authorMiddleName />
+    </label>
+    <br />
+    <label>Last Name:
+        <input #authorLastName />
+    </label>
+    <button (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''">add</button>
 </div>
 </ul>

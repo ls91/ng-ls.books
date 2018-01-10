@@ -1,9 +1,20 @@
 <div *ngIf="author">
-    <h2>{{ author.name | uppercase }} Details</h2>
+    <h2>{{ author.lastName + ", " + author.firstName + (!author.middleName.trim() ? "" : " ") + author.middleName | uppercase }} Details</h2>
     <div>
-        <div><span>id: </span>{{ author.id }}</div>
-        <label>name:
-            <input [(ngModel)]="author.name" placeholder="name">
+        <div>
+            <span>id: </span>{{ author.id }}
+        </div>
+        
+        <label>First Name:
+            <input [(ngModel)]="author.firstName" placeholder="First Name">
+        </label>
+        <br />
+        <label>Middle Name:
+            <input [(ngModel)]="author.middleName" placeholder="Middle Name">
+        </label>
+        <br />
+        <label>Last Name:
+            <input [(ngModel)]="author.lastName" placeholder="Last Name">
         </label>
     </div>
     
