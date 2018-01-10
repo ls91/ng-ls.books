@@ -1,4 +1,35 @@
 <h2>Authors</h2>
+<h3>Add</h3>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="authorFirstName" class="control-label col-xs-2">First Name:</label>
+        <div class="col-xs-10">
+            <input #authorFirstName />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="authorMiddleName" class="control-label col-xs-2">Middle Name:</label>
+        <div class="col-xs-10">
+            <input #authorMiddleName />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="authorLastName" class="control-label col-xs-2">Last Name:</label>
+        <div class="col-xs-10">
+            <input #authorLastName />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button class="btn btn-success" (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''">Add</button>
+        </div>
+    </div>
+</div>
+
 <ul class="authors">
     <li *ngFor="let author of authors">
         <a routerLink="/authors/{{ author.id }}">
@@ -6,19 +37,4 @@
         </a>
         <button type="button" class="btn btn-danger" title="delete author" (click)="delete(author)">x</button>
     </li>
-    
-    <div>
-    <label>First Name:
-        <input #authorFirstName />
-    </label>
-    <br />
-    <label>Middle Name:
-        <input #authorMiddleName />
-    </label>
-    <br />
-    <label>Last Name:
-        <input #authorLastName />
-    </label>
-    <button (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''">add</button>
-</div>
 </ul>
