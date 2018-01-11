@@ -1,40 +1,52 @@
 <h2>Authors</h2>
-<h3>Add</h3>
 
-<div class="form-horizontal">
-    <div class="form-group">
-        <label for="authorFirstName" class="control-label col-xs-2">First Name:</label>
-        <div class="col-xs-10">
-            <input #authorFirstName />
-        </div>
+<div class="row">
+    <label for="authorFirstName" class="control-label col-xs-2">First Name:</label>
+    <div class="col">
+        <input #authorFirstName />
     </div>
-    
-    <div class="form-group">
-        <label for="authorMiddleName" class="control-label col-xs-2">Middle Name:</label>
-        <div class="col-xs-10">
-            <input #authorMiddleName />
-        </div>
+        
+    <label for="authorMiddleName" class="control-label col-xs-2">Middle Name:</label>
+    <div class="col">
+        <input #authorMiddleName />
     </div>
-    
-    <div class="form-group">
-        <label for="authorLastName" class="control-label col-xs-2">Last Name:</label>
-        <div class="col-xs-10">
-            <input #authorLastName />
-        </div>
+
+    <label for="authorLastName" class="control-label col-xs-2">Last Name:</label>
+    <div class="col">
+        <input #authorLastName />
     </div>
-    
-    <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-            <button class="btn btn-success" (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''">Add</button>
-        </div>
-    </div>
+
+    <div class="col">
+        <button class="btn btn-success" (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''">Add</button>
+    </div>    
 </div>
-
-<ul class="authors">
-    <li *ngFor="let author of authors">
-        <a routerLink="/authors/{{ author.id }}">
-            <span class="badge">{{ author.id }}</span> {{ author.lastName + ", " + author.firstName + (!author.middleName.trim() ? "" : " ") + author.middleName }}
-        </a>
-        <button type="button" class="btn btn-danger" title="delete author" (click)="delete(author)">x</button>
-    </li>
-</ul>
+<div class="row">
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Last</th>
+                <th scope="col">First</th>
+                <th scope="col">Middle</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let author of authors">
+                <th scope="row">{{ author.id }}</th>
+                <td>{{ author.lastName }}</td>
+                <td>{{ author.firstName }}</td>
+                <td>{{ author.middleName }}</td>
+                <td>
+                    <a routerLink="/authors/{{ author.id }}">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" title="delete author" (click)="delete(author)">x</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
